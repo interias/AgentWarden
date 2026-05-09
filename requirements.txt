@@ -1,0 +1,4 @@
+# Keep dependency declarations in pyproject.toml.
+# This file is a convenience entrypoint for local development:
+#   python -m pip install -r requirements.txt
+-e .[dev]

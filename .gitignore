@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Editors and OS files
+.idea/
+.vscode/*
+!.vscode/
+!.vscode/tasks.json
+*.swp
+*.swo
+Thumbs.db
+Desktop.ini
+
+# Agent Warden local runtime files
+*.log
+agent-warden-smoke-config.json
