@@ -4,15 +4,15 @@
   "description": "Watch active, idle, and finished coding agents in a local overlay while gaming.",
   "icon": "assets/icon.png",
   "version": "0.1.0",
-  "publisher": "interias",
+  "publisher": "sboerzel",
   "license": "MIT",
-  "homepage": "https://github.com/interias/AgentWarden#readme",
+  "homepage": "https://github.com/sboerzel/AgentWarden#readme",
   "bugs": {
-    "url": "https://github.com/interias/AgentWarden/issues"
+    "url": "https://github.com/sboerzel/AgentWarden/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/interias/AgentWarden"
+    "url": "https://github.com/sboerzel/AgentWarden"
   },
   "galleryBanner": {
     "color": "#0C1B24",

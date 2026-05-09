@@ -65,7 +65,7 @@ The extension launches the local Python app and displays command output. It does
 
 Agent Warden is open source. The repository, issue tracker, and project documentation are available on GitHub:
 
-https://github.com/interias/AgentWarden
+https://github.com/sboerzel/AgentWarden
 
 ## Requirements
 
