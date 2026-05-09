@@ -61,6 +61,12 @@ Agent Warden is local-first by design:
 
 The extension launches the local Python app and displays command output. It does not add a second Codex log parser in TypeScript.
 
+## Source Code
+
+Agent Warden is open source. The repository, issue tracker, and project documentation are available on GitHub:
+
+https://github.com/interias/AgentWarden
+
 ## Requirements
 
 - Windows is the primary target.
