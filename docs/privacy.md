@@ -8,6 +8,7 @@ Agent Warden is local-first and privacy-preserving by default.
 - No telemetry.
 - No account system.
 - No network calls for monitoring.
+- No VS Code extension telemetry.
 - No prompt or completion display.
 - No JSONL event payload parsing in the MVP.
 - No sensitive raw data in logs, docs, tests, or memory files.
@@ -22,6 +23,8 @@ The Codex watcher reads filesystem metadata from local session files:
 - existence of matching `*.jsonl` files
 
 The watcher does not open JSONL files to inspect event contents.
+
+The VS Code extension starts the Python Core and reads command output. It does not scan Codex files itself and does not add a second telemetry or parsing path.
 
 ## Data Shown To The User
 

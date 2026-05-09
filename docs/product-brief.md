@@ -30,6 +30,7 @@ Included:
 - One-shot CLI scan for debugging.
 - VS Code tasks for starting, scanning, and testing.
 - Fixed overlay positions: top-left, top-right, bottom-left, bottom-right.
+- Installable VS Code extension for controlling the local overlay.
 
 Not included:
 
@@ -40,6 +41,7 @@ Not included:
 - Packaged Windows `.exe`.
 - Parsing or displaying private prompt/completion contents.
 - Multi-agent support beyond the initial Codex watcher.
+- Reimplementing watcher logic in TypeScript.
 
 ## Current Status Semantics
 

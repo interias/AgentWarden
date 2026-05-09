@@ -11,6 +11,7 @@ Agent Warden is an open-source, Windows-first, local-only Python overlay for mon
 - Current overlay implementation is Tkinter.
 - Local development uses `.venv`, `requirements.txt`, a PowerShell start script, and VS Code tasks.
 - Current status inference is metadata-only and based on file modification time.
+- A VS Code extension under `extensions/vscode/` controls the Python app as a launcher/status/settings layer.
 
 ## Canonical Sources
 
@@ -32,5 +33,6 @@ Agent Warden is an open-source, Windows-first, local-only Python overlay for mon
 - Overlay summary formatting: `src/agent_warden/overlay/summary.py`
 - Start script: `scripts/start-agent-warden.ps1`
 - VS Code tasks: `.vscode/tasks.json`
+- VS Code extension: `extensions/vscode/`
 
 Keep this file compact. Put durable technical detail in the canonical docs instead.

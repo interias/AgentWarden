@@ -5,6 +5,7 @@ Agent Warden is a small Python application with three main parts:
 - Configuration loading.
 - Agent watchers that return metadata-only session status.
 - A Tkinter overlay that polls watchers and renders aggregate state.
+- A VS Code extension that controls the Python app without reimplementing watcher logic.
 
 The architecture is intentionally conservative. The MVP favors predictable polling and stdlib UI over real-time filesystem subscriptions, background services, or a larger GUI framework.
 
@@ -34,6 +35,14 @@ Primary package: `src/agent_warden/`
 - `overlay/summary.py`: pure overlay summary formatting.
 
 Tests live in `tests/` and avoid launching the visible overlay.
+
+VS Code extension package: `extensions/vscode/`
+
+- `src/extension.ts`: command registration, statusbar, output channel.
+- `src/controller.ts`: extension-owned process control.
+- `src/config.ts`: settings resolution and Python launch argument construction.
+- `scripts/prepare-python.js`: copies `src/agent_warden` into the VSIX package.
+- `test/`: Node tests for pure extension helper logic.
 
 ## Data Model
 
@@ -159,8 +168,24 @@ VS Code tasks:
 - `Agent Warden: Scan Once`
 - `Agent Warden: Test`
 
+VS Code extension commands:
+
+- `Agent Warden: Start`
+- `Agent Warden: Stop`
+- `Agent Warden: Restart`
+- `Agent Warden: Scan Once`
+- `Agent Warden: Set Position`
+- `Agent Warden: Show Output`
+- `Agent Warden: Commands`
+
+The extension status bar item opens this command menu directly.
+
+The extension bundles the Python package into the VSIX and starts it with `PYTHONPATH=<extension>/python`. In development mode it falls back to the repository `src` directory.
+
 ## Extension Points
 
 Future watchers should implement the `AgentWatcher` protocol and return `WatcherSnapshot`.
 
 Future event parsing must be designed explicitly before implementation. It should use an allowlist of non-private event types and fields, and it must not expose prompt or completion content.
+
+The VS Code extension must remain a control layer. It should not duplicate Codex watcher behavior in TypeScript unless a later decision changes the architecture.

@@ -11,3 +11,5 @@
 - Added a PowerShell start script and VS Code tasks for starting, scanning, and testing Agent Warden.
 - Reorganized documentation into public quickstart, docs index, product brief, architecture, development guide, privacy model, and compact AI memory.
 - Changed the overlay default to top-right and documented fixed corner positioning.
+- Added a marketplace-ready VS Code extension scaffold for controlling the Python Agent Warden overlay.
+- Added a VS Code status bar command menu and Agent Warden icon.

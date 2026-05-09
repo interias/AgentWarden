@@ -8,6 +8,7 @@ This guide covers local setup, common commands, VS Code tasks, and verification 
 - Python 3.12 or newer.
 - Python 3.13 is the current local development baseline.
 - PowerShell for helper scripts and VS Code tasks.
+- Node.js and npm for the VS Code extension.
 
 The project has no runtime dependencies outside the Python standard library. Development dependencies are declared in `pyproject.toml` and installed through `requirements.txt`.
 
@@ -76,6 +77,43 @@ Run `Terminal > Run Task...` and choose:
 
 The tasks call the same PowerShell helper script used from the terminal.
 
+## VS Code Extension
+
+The installable extension lives in `extensions/vscode/`.
+
+```powershell
+cd extensions\vscode
+npm install
+npm run compile
+npm test
+npm run package
+code --install-extension .\agent-warden-0.1.0.vsix
+```
+
+If `code --install-extension` resolves to `Code.exe` directly and reports `bad option`, run the CLI script explicitly:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\Microsoft VS Code\bin\code.cmd" --install-extension .\agent-warden-0.1.0.vsix --force
+```
+
+The extension bundles the Python package during packaging:
+
+```powershell
+npm run prepare-python
+```
+
+Extension commands:
+
+- `Agent Warden: Start`
+- `Agent Warden: Stop`
+- `Agent Warden: Restart`
+- `Agent Warden: Scan Once`
+- `Agent Warden: Set Position`
+- `Agent Warden: Show Output`
+- `Agent Warden: Commands`
+
+The status bar item uses the Agent Warden icon and opens the command menu on click.
+
 ## Verification
 
 Use the project virtual environment:
@@ -92,6 +130,15 @@ For a local smoke test:
 .\scripts\start-agent-warden.ps1 -Once
 ```
 
+For extension checks:
+
+```powershell
+cd extensions\vscode
+npm run compile
+npm test
+npm run package
+```
+
 Do not claim a check passed unless it was run.
 
 ## Dependency Policy
@@ -99,6 +146,7 @@ Do not claim a check passed unless it was run.
 - Keep runtime dependencies at zero unless a dependency is clearly necessary.
 - Declare dependencies in `pyproject.toml`.
 - Keep `requirements.txt` as a convenience file pointing to `-e .[dev]`.
+- Keep VS Code extension dependencies scoped under `extensions/vscode/package.json`.
 - Do not add watcher, GUI, or packaging dependencies without updating `docs/architecture.md` and `docs/ai/DECISIONS.md`.
 
 ## Workspace Hygiene
@@ -111,5 +159,6 @@ Ignored local files include:
 - build artifacts
 - local `.env` files
 - local logs
+- extension `node_modules/`, `out/`, bundled `python/`, and `*.vsix`
 
 `.vscode/tasks.json` is intentionally tracked. Other `.vscode` files remain ignored.

@@ -30,3 +30,7 @@ Documentation is split by audience and source of truth:
 ## 2026-05-09: Overlay default position
 
 The overlay defaults to the top-right corner because it is less likely to cover common game HUD elements and developer terminal prompts than the top-left corner. Users can select any fixed corner through config or CLI.
+
+## 2026-05-09: VS Code extension as control layer
+
+The VS Code extension controls the existing Python app instead of reimplementing watcher logic in TypeScript. It starts the bundled Python package with CLI arguments, manages only extension-owned processes, and keeps telemetry disabled.

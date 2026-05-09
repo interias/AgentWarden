@@ -21,7 +21,7 @@ Agent Warden currently:
 - Infers `active`, `idle`, and `finished` states from modification age.
 - Shows a small Tkinter overlay in the top-right corner by default.
 - Provides a one-shot CLI scan for debugging and validation.
-- Includes VS Code tasks for starting, scanning, and testing.
+- Includes VS Code tasks and a VS Code extension for starting, stopping, scanning, and configuring the overlay.
 
 It does not parse JSONL event contents.
 
@@ -54,6 +54,8 @@ In VS Code, use `Terminal > Run Task...`:
 - `Agent Warden: Start Overlay`
 - `Agent Warden: Scan Once`
 - `Agent Warden: Test`
+
+The installable VS Code extension lives in `extensions/vscode/`. It controls the Python overlay without duplicating watcher logic.
 
 ## Configuration
 
@@ -111,6 +113,19 @@ git diff --check
 ```
 
 Dependencies are declared in `pyproject.toml`. `requirements.txt` is a convenience entrypoint for local development.
+
+Build the VS Code extension:
+
+```powershell
+cd extensions\vscode
+npm install
+npm run compile
+npm test
+npm run package
+code --install-extension .\agent-warden-0.1.0.vsix
+```
+
+If `code --install-extension` resolves to `Code.exe` directly on Windows, use `%LOCALAPPDATA%\Programs\Microsoft VS Code\bin\code.cmd` instead.
 
 ## License
 
