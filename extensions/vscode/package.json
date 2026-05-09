@@ -1,26 +1,43 @@
 {
   "name": "agent-warden",
   "displayName": "Agent Warden",
-  "description": "Control the local Agent Warden overlay from VS Code.",
+  "description": "Watch active, idle, and finished coding agents in a local overlay while gaming.",
   "icon": "assets/icon.png",
   "version": "0.1.0",
   "publisher": "interias",
   "license": "MIT",
+  "homepage": "https://github.com/interias/AgentWarden#readme",
+  "bugs": {
+    "url": "https://github.com/interias/AgentWarden/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/interias/AgentWarden"
+  },
+  "galleryBanner": {
+    "color": "#0C1B24",
+    "theme": "dark"
   },
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Visualization"
   ],
   "keywords": [
     "agent",
+    "ai-agent",
+    "coding-agent",
     "codex",
+    "gaming",
+    "monitoring",
     "overlay",
-    "local-first"
+    "fullscreen",
+    "borderless",
+    "local-first",
+    "privacy",
+    "status-bar"
   ],
   "activationEvents": [
     "onCommand:agentWarden.start",
