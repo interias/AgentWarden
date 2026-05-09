@@ -1,0 +1,133 @@
+{
+  "name": "agent-warden",
+  "displayName": "Agent Warden",
+  "description": "Control the local Agent Warden overlay from VS Code.",
+  "icon": "assets/icon.png",
+  "version": "0.1.0",
+  "publisher": "interias",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/interias/AgentWarden"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "agent",
+    "codex",
+    "overlay",
+    "local-first"
+  ],
+  "activationEvents": [
+    "onCommand:agentWarden.start",
+    "onCommand:agentWarden.stop",
+    "onCommand:agentWarden.restart",
+    "onCommand:agentWarden.scanOnce",
+    "onCommand:agentWarden.setPosition",
+    "onCommand:agentWarden.showOutput",
+    "onCommand:agentWarden.openMenu",
+    "onStartupFinished"
+  ],
+  "main": "./out/src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentWarden.start",
+        "title": "Agent Warden: Start"
+      },
+      {
+        "command": "agentWarden.stop",
+        "title": "Agent Warden: Stop"
+      },
+      {
+        "command": "agentWarden.restart",
+        "title": "Agent Warden: Restart"
+      },
+      {
+        "command": "agentWarden.scanOnce",
+        "title": "Agent Warden: Scan Once"
+      },
+      {
+        "command": "agentWarden.setPosition",
+        "title": "Agent Warden: Set Position"
+      },
+      {
+        "command": "agentWarden.showOutput",
+        "title": "Agent Warden: Show Output"
+      },
+      {
+        "command": "agentWarden.openMenu",
+        "title": "Agent Warden: Commands"
+      }
+    ],
+    "configuration": {
+      "title": "Agent Warden",
+      "properties": {
+        "agentWarden.position": {
+          "type": "string",
+          "enum": [
+            "top-left",
+            "top-right",
+            "bottom-left",
+            "bottom-right"
+          ],
+          "default": "top-right",
+          "description": "Overlay corner position."
+        },
+        "agentWarden.pollIntervalSeconds": {
+          "type": "number",
+          "default": 10,
+          "minimum": 5,
+          "maximum": 60,
+          "description": "Polling interval in seconds."
+        },
+        "agentWarden.activeThresholdSeconds": {
+          "type": "number",
+          "default": 60,
+          "minimum": 1,
+          "description": "Seconds since last modification considered active."
+        },
+        "agentWarden.opacity": {
+          "type": "number",
+          "default": 0.92,
+          "minimum": 0.2,
+          "maximum": 1,
+          "description": "Overlay opacity."
+        },
+        "agentWarden.sessionsRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Optional Codex sessions root override."
+        },
+        "agentWarden.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional Python executable override. Leave empty to auto-detect."
+        },
+        "agentWarden.autoStart": {
+          "type": "boolean",
+          "default": false,
+          "description": "Start Agent Warden when VS Code finishes starting."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "node scripts/clean.js",
+    "compile": "tsc -p .",
+    "prepare-python": "node scripts/prepare-python.js",
+    "test": "npm run compile && node --test out/test/*.test.js",
+    "vscode:prepublish": "npm run compile && npm run prepare-python",
+    "package": "npm run vscode:prepublish && vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.15.0",
+    "typescript": "^5.4.5"
+  }
+}

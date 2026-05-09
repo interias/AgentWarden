@@ -34,3 +34,9 @@ Desktop.ini
 # Agent Warden local runtime files
 *.log
 agent-warden-smoke-config.json
+
+# VS Code extension build outputs
+extensions/vscode/node_modules/
+extensions/vscode/out/
+extensions/vscode/python/
+*.vsix
